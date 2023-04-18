@@ -1,4 +1,4 @@
-# dalle_image_generator
+# DALL·E Image Generator from OpenAi
 Image generator made with DALLE API from OpenAi
 
 This program has been tested on python 3.9.0.
