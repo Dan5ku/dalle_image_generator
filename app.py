@@ -1,6 +1,6 @@
+#tested on python 3.9.0
 from auth import auth_token
 import tkinter as tk
-import customtkinter as ctk
 from PIL import Image, ImageTk
 import requests
 
@@ -13,19 +13,18 @@ openai.api_key = auth_token
 app = tk.Tk()
 app.geometry("532x632")
 app.title("DALL E magic")
-ctk.set_appearance_mode("dark")
 
 main_image = tk.Canvas(app, width=512, height=512)
 main_image.place(x=10, y=110)
 
-prompt_input = ctk.CTkEntry(
-    height=40,
-    width=512,
-    text_font=("Arial", 20),
-    text_color="black",
-    fg_color="white",
-    placeholder_text="Enter prompt.",
+prompt_input = tk.Entry(
+    app,
+    font=("Arial", 16),
+    width=38,
+    bg="white",
+    fg="black",
 )
+prompt_input.insert(0, "Enter prompt.")
 prompt_input.place(x=10, y=10)
 
 
@@ -47,26 +46,24 @@ def save_image():
     img.save(f"img/{prompt}.png")
 
 
-magic_button = ctk.CTkButton(
-    height=40,
-    width=120,
-    text_font=("Arial", 20),
-    text_color="white",
-    fg_color=("white", "gray38"),
+magic_button = tk.Button(
+    app,
+    font=("Arial", 20),
+    bg="white",
+    fg="black",
+    text="Apply magic",
     command=apply_magic,
 )
-magic_button.configure(text="Apply magic")
-magic_button.place(x=133, y=60)
+magic_button.place(x=100, y=60)
 
-save_button = ctk.CTkButton(
-    height=40,
-    width=120,
-    text_font=("Arial", 20),
-    text_color="white",
-    fg_color=("white", "gray38"),
+save_button = tk.Button(
+    app,
+    font=("Arial", 20),
+    bg="white",
+    fg="black",
+    text="Save image",
     command=save_image,
 )
-save_button.configure(text="Save image")
 save_button.place(x=266, y=60)
 
 app.mainloop()
